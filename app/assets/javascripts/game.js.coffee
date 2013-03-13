@@ -4,7 +4,27 @@
 $ ->
   word_index = Math.floor(Math.random()*gon.words.length)
   window.word = gon.words[word_index]
+  window.guess_number = 1
   cell = $("tr:first-child td:first-child")
   $(cell).html word[0]
   $(cell).addClass "red"
   word[0]
+
+  $("button").on "click", ->
+    guess = $("input").val().toLowerCase()
+    if $.inArray(guess, gon.words) != -1
+      for character, i in guess
+        selector = "tr:nth-child(#{guess_number+1}) td:nth-child(#{i+1})"
+        console.log selector
+        cell = $(selector)
+        cell.html(character)
+        if character == word[i]
+          # this is capital red letter (it's in the right place)
+          $(cell).addClass "red"
+        else if $.inArray(character, word) != -1
+          # this is a capital blue letter (it's in the word in another slot)
+          $(cell).addClass "blue"
+        else
+          # this is a lowercase black letter (not in the word at all)
+    else
+      console.log "nice try"
