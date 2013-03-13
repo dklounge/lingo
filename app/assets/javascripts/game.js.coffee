@@ -24,7 +24,7 @@ $ ->
         else if $.inArray(character, word) != -1
           # this is a capital blue letter (it's in the word in another slot)
           $(cell).addClass "blue"
-        else
-          # this is a lowercase black letter (not in the word at all)
+      $("ol").append("<li>#{guess}</li>")
+      guess_number++
     else
       console.log "nice try"
