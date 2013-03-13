@@ -1,4 +1,7 @@
 Lingo::Application.routes.draw do
+  resources :game, :only => :index
+  root :to => "game#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
